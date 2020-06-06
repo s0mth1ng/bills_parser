@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bills parser</string>
+    <string name="load_bill">Load bill</string>
+</resources>

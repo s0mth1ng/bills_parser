@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ItemView">
+        <attr name="itemName" format="string" />
+        <attr name="itemQuantity" format="string" />
+        <attr name="itemSum" format="string" />
+    </declare-styleable>
+    <declare-styleable name="BillView">
+        <attr name="debtorName" format="string" />
+        <attr name="debtAmount" format="string" />
+    </declare-styleable>
+</resources>
