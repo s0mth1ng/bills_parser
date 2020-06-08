@@ -1,3 +1,3 @@
 package com.example.billsparser
 
-data class BillView(val debtorName: String, val debtAmount: Float)
+data class BillView(val debtorName: String, val debtAmount: Double)

@@ -24,7 +24,7 @@ class BillAdapter(private val billList: List<BillView>) :
     override fun onBindViewHolder(holder: BillViewHolder, position: Int) {
         val currentItem = billList[position]
         holder.debtorNameView.text = currentItem.debtorName
-        holder.debtAmountView.text = String.format("%.2f", currentItem.debtAmount)
+        holder.debtAmountView.text = String.format("%.2f ₽", currentItem.debtAmount)
     }
 
     class BillViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
