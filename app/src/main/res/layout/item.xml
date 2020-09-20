@@ -42,7 +42,6 @@
             android:id="@+id/namesBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/namesbox_back"
             app:alignContent="center"
             app:justifyContent="space_evenly">
 

@@ -1,15 +1,17 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-        <!-- Customize your theme here. -->
-<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
-        <item name="toolbarStyle">@style/CustomToolBarStyle</item>
-    </style>
+    <!--    <style name="AppTheme" parent="Theme.MaterialComponents.Light">-->
+    <!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--&lt;!&ndash;        <item name="colorPrimary">@color/colorPrimary</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <item name="colorAccent">@color/colorAccent</item>&ndash;&gt;-->
+    <!--        <item name="toolbarStyle">@style/CustomToolBarStyle</item>-->
+    <!--    </style>-->
 
-    <style name="CustomToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">
-        <item name="titleTextColor">@android:color/white</item>
-    </style>
+    <!--    <style name="CustomToolBarStyle" parent="@style/Widget.AppCompat.Toolbar">-->
+    <!--        <item name="titleTextColor">@android:color/white</item>-->
+    <!--    </style>-->
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar"></style>
 
 </resources>

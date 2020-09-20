@@ -4,13 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexboxLayout
@@ -20,7 +19,7 @@ import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import kotlin.math.max
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,29 +34,50 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
-        loadButton.setOnClickListener {
-            totalAmount = Array(namesCount) { 0.toDouble() }
-            itemsList.clear()
-            prices.clear()
-
-            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE)
-                type = "application/json"
-            }
-
-            startActivityForResult(intent, pickJsonFileCode)
+        intent?.data?.also {
+            onActivityResult(pickJsonFileCode, Activity.RESULT_OK, intent)
         }
+
         val debtList = createDebtList()
         debtBox.adapter = BillAdapter(debtList)
-        debtBox.layoutManager = LinearLayoutManager(this)
+        debtBox.layoutManager = GridLayoutManager(this, 2)
         debtBox.setHasFixedSize(true)
+    }
+
+    private fun loadBillFromJson() {
+        totalAmount = Array(namesCount) { 0.toDouble() }
+        itemsList.clear()
+        prices.clear()
+
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/json"
+        }
+
+        startActivityForResult(intent, pickJsonFileCode)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.loadHeaderButton -> {
+                loadBillFromJson()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun createDebtList(): List<BillView> {
         val list = arrayListOf<BillView>(
             BillView(
-                "Total:",
+                "Total",
                 totalPrice.toDouble() / 100
             )
         )
